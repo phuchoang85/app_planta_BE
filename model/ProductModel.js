@@ -21,10 +21,6 @@ const productSchema = new mongoose.Schema({
             ref: "Image"
         }
     ],
-    size: {
-        type: String,
-        required: true,
-    },
     origin: {
         type: String,
         required: true
@@ -33,15 +29,7 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    lever: {
-        type: String,
-        required: true
-    },
     knowledge: {
-        type: Array,
-        default: []
-    },
-    stage: {
         type: Array,
         default: []
     },

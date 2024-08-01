@@ -9,7 +9,7 @@ const cors = require('cors');
 var indexRouter = require('./routes/index');
 
 var app = express();
-const MONGODB_URL ='mongodb://localhost:27017';
+const MONGODB_URL ='mongodb://203.145.47.208:29204/PDP201';
 
 // view engine setup
 

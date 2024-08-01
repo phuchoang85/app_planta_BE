@@ -76,6 +76,7 @@ router.get('/xac-thuc-email', userController.verificationEmail);
     "password" : "password"
     }
 */
+router.get('/getalluser', userController.getAllUser)
 router.post('/login', userController.login);
 router.put('/updatecart/:id', userController.updateCart);
 router.put('/addCart/:id', userController.addCart);

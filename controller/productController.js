@@ -16,10 +16,10 @@ const productController = {
     },
     addProduct: async (req, res) => {
         try {
-            let { name, price, quantity, size, origin, descripe, lever, catalog, manUpdated, prototy, img } = req.body;
+            let { name, price, quantity,  origin, descripe,  catalog, manUpdated, prototy, img } = req.body;
             price = Number(price);
             quantity = Number(quantity);
-            if (!name || isNaN(price) || isNaN(quantity) || !size || !origin || !descripe || !lever || !catalog || !manUpdated || !img)
+            if (!name || isNaN(price) || isNaN(quantity) || !origin || !descripe  || !catalog || !manUpdated || !img)
                 return res.status(400).json({ status: false, data: 'Không được bỏ trống' });
 
             if (!Array.isArray(prototy)) {
@@ -64,12 +64,12 @@ const productController = {
     },
     updateProduct: async (req, res) => {
         try {
-            let { name, price, quantity, size, origin, descripe, lever, catalog, manUpdated, prototy, img } = req.body;
+            let { name, price, quantity,  origin, descripe,  catalog, manUpdated, prototy, img } = req.body;
             const { _id } = req.query;
 
             price = Number(price);
             quantity = Number(quantity);
-            if (!_id || !name || isNaN(price) || isNaN(quantity) || !size || !origin || !descripe || !lever || !catalog || !manUpdated || !img)
+            if (!_id || !name || isNaN(price) || isNaN(quantity)  || !origin || !descripe  || !catalog || !manUpdated || !img)
                 return res.status(400).json({ status: false, data: 'Không được bỏ trống' });
 
             if (!Array.isArray(prototy)) {
@@ -123,10 +123,8 @@ const productController = {
             newProduct.name = name;
             newProduct.price = price;
             newProduct.quantity = quantity;
-            newProduct.size = size;
             newProduct.origin = origin;
             newProduct.descripe = descripe;
-            newProduct.lever = lever;
             newProduct.catalog = catalog;
             newProduct.manUpdated = manUpdated;
             newProduct.prototy = prototy;
@@ -173,7 +171,7 @@ const productController = {
                 })
                 .sort({ createdAt: -1 })
                 .limit(limit)
-                .skip(skip).select(['name', 'price','quantity','imgs','size','origin','descripe','lever','knowledge','stage','catalog','prototy',]);
+                .skip(skip).select(['name', 'price','quantity','imgs','origin','descripe','knowledge','stage','catalog','prototy',]);
            
                 return res.status(200).json({ status: true, data: newProduct });
         } catch (error) {
@@ -242,7 +240,7 @@ const productController = {
                     model: 'Prototy',
                     select: ['title','isExist']
                 })
-                .select(['name', 'price', 'quantity', 'imgs', 'size', 'origin', 'descripe', 'lever', 'knowledge', 'stage', 'catalog', 'prototy','isExist']);
+                .select(['name', 'price', 'quantity', 'imgs',  'origin', 'descripe', 'knowledge', 'stage', 'catalog', 'prototy','isExist']);
 
                 if (!newProduct || !newProduct.isExist) {
                     return res.status(400).json({ status: false, data: "Không tìm thấy sản phẩm hoặc sản phẩm không tồn tại" });
@@ -293,7 +291,7 @@ const productController = {
                     select: ['title',"isExist"],
                     match: {isExist: true}
                 })
-                .select(['name', 'price', 'quantity', 'imgs', 'size', 'origin', 'descripe', 'lever', 'knowledge', 'stage', 'catalog', 'prototy','isExist']);
+                .select(['name', 'price', 'quantity', 'imgs',  'origin', 'descripe', 'knowledge', 'stage', 'catalog', 'prototy','isExist']);
                 console.log(newProduct)
                 return res.status(200).json({ status: true, data: newProduct });  
         } catch (error) {
@@ -326,7 +324,7 @@ const productController = {
                     model: 'Prototy',
                     select: 'title'
                 })
-                .select(['name', 'price', 'quantity', 'imgs', 'size', 'origin', 'descripe', 'lever', 'knowledge', 'stage', 'catalog', 'prototy'])
+                .select(['name', 'price', 'quantity', 'imgs',  'origin', 'descripe','knowledge', 'stage', 'catalog', 'prototy'])
                 .sort({ quantity: 1 });
             console.log(result)
             return res.status(200).json({ status: true, data: result });

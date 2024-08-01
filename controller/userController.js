@@ -197,7 +197,7 @@ const userController = {
                     }
                 }
 
-            ).select(['name', 'email', 'password', 'avatar', 'address', 'phoneNumber', 'carts', 'orders','role'])
+            ).select(['name', 'email', 'password', 'avatar', 'address', 'phoneNumber', 'carts', 'orders', 'role'])
 
             if (!resultEmail)
                 return res.status(400).json({ status: false, data: "Không tìm thấy email" });
@@ -420,7 +420,7 @@ const userController = {
     },
     getOrder: async (req, res) => {
         try {
-            const { id} = req.query;
+            const { id } = req.query;
 
             if (!id)
                 return res.status(400).json({ status: false, data: 'không được bỏ trống' })
@@ -451,7 +451,7 @@ const userController = {
                     }
                 )
                 .select('orders')
-                .sort({_id: 1})
+                .sort({ _id: 1 })
 
             return res.status(200).json({ status: true, data: user.orders })
         } catch (error) {
@@ -479,11 +479,21 @@ const userController = {
                 return res.status(400).json({ status: false, data: 'không phải tài khoản admin' })
 
 
-            return res.status(200).json({ status: true, data: resultEmail._id });
+            return res.status(200).json({ status: true, data: resultEmail });
 
         } catch (error) {
             console.log(error);
             return res.status(500).json({ status: false, data: "Không đăng nhập được" })
+        }
+    },
+    getAllUser: async (req, res) => {
+        try {
+            const data = await User.find().sort({ createdAt: -1 });
+
+            return res.status(200).json({ status: true, data: data })
+        } catch (error) {
+            console.log(error);
+            return res.status(500).json({ status: false, data: 'Lỗi' })
         }
     }
 }
