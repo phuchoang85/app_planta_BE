@@ -22,7 +22,7 @@ const html = (token, email) => {
                     <h4 class="alert-heading">Xác thực tài khoản của bạn!</h4>
 
                     <button type="button" class="btn btn-primary">
-                      <a href="http://localhost:3000/verifiEmail?token=${token}&email=${email}">Hãy click vào đây để xác nhận</a>
+                      <a href="http://quockhanh020924.id.vn:3000/verifiEmail?token=${token}&email=${email}">Hãy click vào đây để xác nhận</a>
                     </button>
                     
                     <p>Mã có hiệu lực trong vòng 1h. Vui lòng nhập mã trong khoảng thời gian quy định.</p>
