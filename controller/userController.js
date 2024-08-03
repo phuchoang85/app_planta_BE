@@ -70,7 +70,6 @@ const userController = {
                 return res.status(400).json({ status: false, data: "Số điện thoại không đúng định dạng" })
 
             if (name.length < 6)
-            if (name.length < 6)
                 return res.status(400).json({ status: false, data: "Tên phải trên 6 kí tự" })
 
             const checkEmail = await userController.validateEmail(email);
