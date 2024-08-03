@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 const cors = require('cors');
 
 var indexRouter = require('./routes/index');
@@ -12,7 +13,7 @@ var app = express();
 const MONGODB_URL ='mongodb://203.145.47.208:29204/PDP201';
 
 // view engine setup
-
+app.use(bodyParser.json({limit:'20mb'}));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
