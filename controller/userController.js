@@ -69,8 +69,7 @@ const userController = {
             if (!phoneNumber.match(regexPhonenumber))
                 return res.status(400).json({ status: false, data: "Số điện thoại không đúng định dạng" })
 
-            const regexName = /^[A-Za-z]{6,}/
-            if (!name.match(regexName))
+            if (name.length < 6)
                 return res.status(400).json({ status: false, data: "Tên phải trên 6 kí tự" })
 
             const checkEmail = await userController.validateEmail(email);
@@ -243,8 +242,7 @@ const userController = {
             if (!phoneNumber.match(regexPhonenumber))
                 return res.status(400).json({ status: false, data: "Số điện thoại không đúng định dạng" })
 
-            const regexName = /^[A-Za-z]{6,}/
-            if (!name.match(regexName))
+            if (!name.length < 6)
                 return res.status(400).json({ status: false, data: "Tên phải trên 6 kí tự" })
             const regexLinkAnh = /(https?:\/\/.*\.(?:png|jpg|jpeg|gif))/
 
