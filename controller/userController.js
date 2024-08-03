@@ -69,8 +69,8 @@ const userController = {
             if (!phoneNumber.match(regexPhonenumber))
                 return res.status(400).json({ status: false, data: "Số điện thoại không đúng định dạng" })
 
-            const regexName = /^[A-Za-z]{6,}/
-            if (!name.match(regexName))
+            if (name.length < 6)
+            if (name.length < 6)
                 return res.status(400).json({ status: false, data: "Tên phải trên 6 kí tự" })
 
             const checkEmail = await userController.validateEmail(email);
@@ -230,9 +230,9 @@ const userController = {
     },
     updateUser: async (req, res) => {
         try {
-            let { email, name, phoneNumber, avatar, address, _id } = req.body;
+            let { email, name, phoneNumber, address, _id } = req.body;
 
-            if (!email || !name || !phoneNumber || !avatar || !address || !_id)
+            if (!email || !name || !phoneNumber || !address || !_id)
                 return res.status(400).json({ status: false, data: "Không được bỏ trống dữ liệu" });
 
             const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -243,13 +243,12 @@ const userController = {
             if (!phoneNumber.match(regexPhonenumber))
                 return res.status(400).json({ status: false, data: "Số điện thoại không đúng định dạng" })
 
-            const regexName = /^[A-Za-z]{6,}/
-            if (!name.match(regexName))
+            if (name.length < 6)
                 return res.status(400).json({ status: false, data: "Tên phải trên 6 kí tự" })
-            const regexLinkAnh = /(https?:\/\/.*\.(?:png|jpg|jpeg|gif))/
+            // const regexLinkAnh = /(https?:\/\/.*\.(?:png|jpg|jpeg|gif))/
 
-            if (!avatar.match(regexLinkAnh))
-                return res.status(400).json({ status: false, data: 'Phải là đường link ảnh' })
+            // if (!avatar.match(regexLinkAnh))
+            //     return res.status(400).json({ status: false, data: 'Phải là đường link ảnh' })
 
 
             const checkEmail = await userController.validateEmail(email, _id);

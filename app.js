@@ -6,11 +6,11 @@ var logger = require('morgan');
 var mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-
+require('dotenv').config({path: '.env'});
 var indexRouter = require('./routes/index');
 
 var app = express();
-const MONGODB_URL ='mongodb://203.145.47.208:29204/PDP201';
+const MONGODB_URL = process.env.mongourl;
 
 // view engine setup
 app.use(bodyParser.json({limit:'20mb'}));
