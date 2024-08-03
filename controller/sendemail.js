@@ -38,7 +38,7 @@ const verificationcodes = async (email) => {
  
         // Thông tin về email gửi đi
         const mailOptions = {
-            from: 'testhost@phqmarket.online',
+            from: process.env.user,
             to: email,
             subject: 'verfication code',
             html: html(token,email)
