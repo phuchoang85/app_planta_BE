@@ -229,7 +229,7 @@ const userController = {
     },
     updateUser: async (req, res) => {
         try {
-            let { email, name, phoneNumber, address, _id } = req.body;
+            let { email, name, phoneNumber,avatar = null, address, _id } = req.body;
 
             if (!email || !name || !phoneNumber || !address || !_id)
                 return res.status(400).json({ status: false, data: "Không được bỏ trống dữ liệu" });
