@@ -152,7 +152,6 @@ const productController = {
 
             const skip = (page - 1) * limit;
 
-
             const newProduct = await Product.find({ isExist: true })
                 .populate({
                     path: 'imgs',
@@ -169,7 +168,7 @@ const productController = {
                     model: 'Prototy',
                     select: 'title'
                 })
-                .sort({ createdAt: -1 })
+                .sort({ updateAt: -1 })
                 .limit(limit)
                 .skip(skip).select(['name', 'price','quantity','imgs','origin','descripe','knowledge','stage','catalog','prototy',]);
            
@@ -210,7 +209,7 @@ const productController = {
                     model: 'Prototy',
                     select: 'title'
                 })
-                .sort({ createdAt: -1 })
+                .sort({ updateAt: -1 })
                 .limit(limit)
                 .skip(skip);
             return res.status(200).json({ status: true, data: newProduct });
