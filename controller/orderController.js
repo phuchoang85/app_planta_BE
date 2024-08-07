@@ -66,8 +66,8 @@ const orderController = {
             const regexPhonenumber = /^[\d]{10}/
             if (!phonenumberPayOrder.match(regexPhonenumber))
                 return res.status(400).json({ status: false, data: "Số điện thoại không đúng định dạng" })
-            const regexName = /^[A-Za-z]{6,}/
-            if (!namePayOrder.match(regexName))
+  
+            if (namePayOrder.length < 6)
                 return res.status(400).json({ status: false, data: "Tên phải trên 6 kí tự" })
 
             const finduser = await User.findById(user)
